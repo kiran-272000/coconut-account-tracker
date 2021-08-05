@@ -51,16 +51,16 @@ exports.yearlyData = async (req, res) => {
     yearly,
   });
 };
-// exports.year = async (req, res) => {
-//   await Coconut.find(
-//     {
-//       year: req.params.year,
-//     },
-//     function (err, docs) {
-//       if (docs.length == 0) {
-//         return res.status(404).send("No Records found in this year");
-//       }
-//       res.status(200).send(docs);
-//     }
-//   );
-// };
+exports.year = async (req, res) => {
+  await Coconut.find(
+    {
+      year: req.params.year,
+    },
+    function (err, docs) {
+      if (docs.length == 0) {
+        return res.status(404).send("No Records found in this year");
+      }
+      res.status(200).send(docs);
+    }
+  );
+};
