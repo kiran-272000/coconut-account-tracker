@@ -13,16 +13,18 @@ exports.addCoconut = async (req, res) => {
     },
     function (err, Coconut) {
       if (err) return res.status(302).send(err);
-      res.status(200).send({
-        status: 200,
-        message: "sucess",
-        id: Coconut._id,
+      res.status(200).json({
+        message: "Data Submmited Succesfully",
+        coconutCount: Coconut.coconut_count,
+        amount: Coconut.amount,
+        // id: Coconut._id,
       });
     }
   );
 };
 
 exports.yearlyData = async (req, res) => {
+  console.log("hi");
   const yearly = await Coconut.aggregate([
     {
       $group: {
