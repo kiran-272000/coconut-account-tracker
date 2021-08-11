@@ -5,7 +5,7 @@ dotenv.config({ path: "./config.env" });
 const app = require("./Route/app");
 const port = process.env.PORT;
 
-var server = app.listen(port, function () {
+app.listen(port, function () {
   //   console.log("Server Listening to the Port " + port);
   console.log(`Server Listening to the Port ${port}`);
 });
