@@ -31,7 +31,6 @@ exports.yearlyData = async (req, res) => {
         _id: "$year",
         totalcoconut: { $sum: "$coconut_count" },
         totalamount: { $sum: "$amount" },
-        avg_market_price: { $avg: "$market_price" },
         avg_price_per_coconut: { $avg: "$price_per_coconut" },
       },
     },
