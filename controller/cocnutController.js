@@ -48,9 +48,8 @@ exports.yearlyData = async (req, res) => {
       },
     },
   ]);
-  res.status(200).send({
-    status: "Success",
-    yearly: yearly,
+  res.status(200).json({
+    yearly,
   });
 };
 exports.year = async (req, res) => {
