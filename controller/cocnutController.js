@@ -13,7 +13,7 @@ exports.addCoconut = async (req, res) => {
     },
     function (err, Coconut) {
       if (err) return res.status(302).send(err);
-      res.status(200).json({
+      res.status(201).json({
         date: Coconut.date,
         coconut_count: Coconut.coconut_count,
         market_price: Coconut.market_price,
