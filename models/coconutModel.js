@@ -41,10 +41,6 @@ coconutSchema.pre("save", function (next) {
   next();
 });
 
-// coconutSchema.post("aggregate", function (next) {
-
-// });
-
 const Coconut = mongoose.model("Coconut", coconutSchema);
 
 module.exports = Coconut;

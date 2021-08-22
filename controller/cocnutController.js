@@ -1,4 +1,4 @@
-const Coconut = require("../coconutModel");
+const Coconut = require("../models/coconutModel");
 const { uuid } = require("uuidv4");
 exports.addCoconut = async (req, res) => {
   const data = req.body;
@@ -7,15 +7,16 @@ exports.addCoconut = async (req, res) => {
     {
       _id: uuid(),
       date: data.date,
-      coconut_count: data.coconut_count,
-      market_price: data.marketPrice,
-      price_per_coconut: data.pricePerCoconut,
+      coconut_count: Number(data.coconut_count),
+      market_price: Number(data.marketPrice),
+      price_per_coconut: Number(data.pricePerCoconut),
     },
     function (err, Coconut) {
       if (err) return res.status(302).send(err);
       res.status(200).json({
-        message: "Data Submmited Succesfully",
-        coconutCount: Coconut.coconut_count,
+        date: Coconut.date,
+        coconut_count: Coconut.coconut_count,
+        market_price: Coconut.market_price,
         amount: Coconut.amount,
         // id: Coconut._id,
       });
