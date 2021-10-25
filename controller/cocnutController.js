@@ -2,7 +2,6 @@ const Coconut = require("../models/coconutModel");
 const { uuid } = require("uuidv4");
 exports.addCoconut = async (req, res) => {
   const data = req.body;
-  //var mydate = new Date(data.date);
   const newCoconut = await Coconut.create(
     {
       _id: uuid(),
@@ -18,14 +17,12 @@ exports.addCoconut = async (req, res) => {
         coconut_count: Coconut.coconut_count,
         market_price: Coconut.market_price,
         amount: Coconut.amount,
-        // id: Coconut._id,
       });
     }
   );
 };
 
 exports.yearlyData = async (req, res) => {
-  console.log("hi");
   const yearly = await Coconut.aggregate([
     {
       $group: {
@@ -58,11 +55,13 @@ exports.year = async (req, res) => {
     {
       year: req.params.year,
     },
-    function (err, docs) {
-      if (docs.length == 0) {
+    function (err, year) {
+      if (year.length == 0) {
         return res.status(404).send("No Records found in this year");
       }
-      res.status(200).send(docs);
+      res.status(200).json({
+        year,
+      });
     }
   );
 };
